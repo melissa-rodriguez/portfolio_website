@@ -125,8 +125,10 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 5rem; /* Adjust this value based on your logo size */
-    margin: 1rem 0; /* Add some vertical spacing */
+    height: 5rem;
+    /* Adjust this value based on your logo size */
+    margin: 1rem 0;
+    /* Add some vertical spacing */
 }
 
 .animated-logo {
@@ -136,9 +138,12 @@ footer {
 }
 
 .project-role {
-    margin:0; /* Adds space above the role text */
-    font-size: .9rem; /* Adjust size as needed */
-    color: #888; /* Adjust color as needed */
+    margin: 0;
+    /* Adds space above the role text */
+    font-size: .9rem;
+    /* Adjust size as needed */
+    color: #888;
+    /* Adjust color as needed */
 }
 
 ::selection {
@@ -173,7 +178,7 @@ footer {
 .project-info {
     flex: 1;
     padding-right: 5rem;
-    
+
     height: 100%;
 }
 
@@ -185,12 +190,15 @@ footer {
 
 .project-info .project-subtitle {
     font-size: 1rem;
-    color: #888; /* Lighter color for subtitle */
-    margin: 0 0 2rem 0; /* Add some space before the description */
+    color: #888;
+    /* Lighter color for subtitle */
+    margin: 0 0 2rem 0;
+    /* Add some space before the description */
 }
 
 .project-description {
-    margin-top: 3rem; /* Add space above the description */
+    margin-top: 3rem;
+    /* Add space above the description */
 }
 
 .project-description p {
@@ -217,7 +225,8 @@ footer {
 .video-container {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; /* 16:9 aspect ratio */
+    padding-top: 56.25%;
+    /* 16:9 aspect ratio */
 }
 
 .video-container iframe {
@@ -230,8 +239,10 @@ footer {
 
 .section-divider {
     height: 1px;
-    background-color: #cfcdcd; /* Light grey color, adjust as needed */
-    margin: 40px 0; /* Adjust the vertical margin as needed */
+    background-color: #cfcdcd;
+    /* Light grey color, adjust as needed */
+    margin: 40px 0;
+    /* Adjust the vertical margin as needed */
     width: 100%;
 }
 
@@ -241,12 +252,19 @@ footer {
     }
 
     .project-info {
+        width: 100%;
         padding-right: 0;
         margin-bottom: 20px;
     }
 
+    .project-thumbnail,
     .project-video {
+        width: 100%;
         max-width: 100%;
+    }
+
+    .video-container {
+        margin-top: 20px;
     }
 }
 
@@ -275,17 +293,17 @@ footer {
     .two-column {
         flex-direction: column;
     }
-    
+
     .container {
         max-width: 100%;
         padding: 0 10px;
     }
-    
+
     .footer-content {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .social-icons {
         margin-top: 15px;
     }
