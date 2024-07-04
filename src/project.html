@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Template</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style_project.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="home-link" style="text-decoration: none; color: inherit; cursor: default;">
+                <h1>MELISSA RODRIGUEZ</h1>
+            </a>
+
+            <div class="logo-container">
+                <img src="../assets/me.png" alt="Animated Logo" class="animated-logo">
+            </div>
+
+            <!-- <div class="logo-container">
+                <video autoplay loop muted playsinline class="animated-logo">
+                    <source src="../assets/animation.mov" type="video/mp4">
+                </video>
+            </div> -->
+
+            <nav>
+                <a href="index.html">PORTFOLIO</a>
+                <!-- <a href="#about">ABOUT</a> -->
+            </nav>
+        </header>
+
+        <main>
+            <section class="project-header">
+                <div class="project-info">
+                    <h2>Project Title</h2>
+                    <div class="project-subtitle">Project Subtitle</div>
+                    <div class="project-description">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                    </div>
+
+                    <p class="project-role">Design / Animation / Art Direction</p>
+
+                </div>
+
+                <!-- IMAGE THUMBNAIL  -->
+                <!-- <div class="project-thumbnail">
+                    <img src="../assets/image1-hover.jpg" alt="Project Thumbnail">
+                </div> -->
+
+                <!-- VIDEO THUMBNAIL -->
+                <div class="project-video">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/yqM_3goH4J8?si=Q3loVpsL6GpR48Ws&amp;controls=0"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+            </section>
+
+            <div class="section-divider"></div>
+
+            <section class="project-images">
+                <!-- First row of images -->
+                <div class="image-container full-width">
+                    <img src="../assets/image1-hover.jpg" alt="Project Image 1">
+                </div>
+
+                <div class="two-column">
+                    <div class="image-container">
+                        <img src="../assets/image1.jpg" alt="Project Image 2">
+                    </div>
+                    <div class="image-container">
+                        <img src="../assets/image1-hover.jpg" alt="Project Image 3">
+                    </div>
+                </div>
+
+                <!-- Additional project description -->
+                <div class="additional-description">
+                    <p>Here you can add more details about your project. Describe the process, challenges, or any other
+                        relevant information that adds depth to your project presentation.</p>
+                </div>
+
+                <!-- Second row of images -->
+                <div class="image-container full-width">
+                    <img src="../assets/image1-hover.jpg" alt="Project Image 4">
+                </div>
+
+                <div class="two-column">
+                    <div class="image-container">
+                        <img src="../assets/image1.jpg" alt="Project Image 5">
+                    </div>
+                    <div class="image-container">
+                        <img src="../assets/image1-hover.jpg" alt="Project Image 6">
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Ⓢ <span id="current-year"></span> Melissa Rodriguez</p>
+            <div class="social-icons">
+                <a href="https://twitter.com/your-twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/your-instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com/in/your-linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/your-github" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="email.html"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

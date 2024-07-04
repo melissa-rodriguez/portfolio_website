@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: white;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        .email-grid {
+            display: flex;
+            flex-wrap: wrap;
+            width: 140vw; /* Increased to extend past viewport width */
+            height: 140vh; /* Increased to extend past viewport height */
+            margin-left: -20vw; /* Adjusted to start further off-screen */
+            margin-top: -20vh; /* Adjusted to start further off-screen */
+        }
+        .email-row {
+            display: flex;
+            width: 100%;
+        }
+        .email-row:nth-child(even) {
+            margin-left: 150px;
+        }
+        .email-item {
+            font-size: 16px;
+            color: #222;
+            word-break: break-all;
+            padding: 10px 20px;
+            margin: 10px;
+            flex: 0 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-grid" id="emailGrid"></div>
+
+    <script>
+        const emailGrid = document.getElementById('emailGrid');
+        const email = 'hello@melissa-rodriguez.com';
+
+        function fillGrid() {
+            emailGrid.innerHTML = '';
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            const itemWidth = 300;
+            const itemHeight = 50;
+
+            const rowsCount = Math.ceil((viewportHeight * 1.4) / itemHeight); // Increased to cover 140vh
+            const itemsPerRow = Math.ceil((viewportWidth * 1.4) / itemWidth); // Increased to cover 140vw
+
+            for (let i = 0; i < rowsCount; i++) {
+                const row = document.createElement('div');
+                row.classList.add('email-row');
+                
+                for (let j = 0; j < itemsPerRow; j++) {
+                    const emailItem = document.createElement('div');
+                    emailItem.classList.add('email-item');
+                    emailItem.textContent = email;
+                    row.appendChild(emailItem);
+                }
+                
+                emailGrid.appendChild(row);
+            }
+        }
+
+        fillGrid();
+        window.addEventListener('resize', fillGrid);
+    </script>
+</body>
+</html>
