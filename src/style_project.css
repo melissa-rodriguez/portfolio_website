@@ -84,7 +84,13 @@ h2 {
 }
 
 .two-column .image-container {
+    /* non 16/9 aspect ratio */
     flex: 1;
+}
+
+.two-column .image-container.aspect-16-9 {
+    flex: 1;
+    padding-top: 28.125%;
 }
 
 footer {
@@ -237,6 +243,15 @@ footer {
     height: 100%;
 }
 
+.project-video-container {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .section-divider {
     height: 1px;
     background-color: #cfcdcd;
@@ -244,6 +259,21 @@ footer {
     margin: 40px 0;
     /* Adjust the vertical margin as needed */
     width: 100%;
+}
+
+a.link-underline {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid #00FF00;
+    transition: border-bottom-color 0.3s ease;
+}
+
+a.link-underline:hover {
+    text-decoration: wavy underline #00FF00;
+}
+
+a.link-underline:visited {
+    color: inherit;
 }
 
 @media (max-width: 768px) {
