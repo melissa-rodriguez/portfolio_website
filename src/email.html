@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/me_icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+
     <title>Email</title>
     <style>
-        body, html {
+        body,
+        html {
             margin: 0;
             padding: 0;
             font-family: 'Open Sans', sans-serif;
@@ -14,21 +20,34 @@
             width: 100%;
             height: 100%;
         }
+
+        ::selection {
+            background: #0000FF;
+            color: white;
+        }
+
         .email-grid {
             display: flex;
             flex-wrap: wrap;
-            width: 140vw; /* Increased to extend past viewport width */
-            height: 140vh; /* Increased to extend past viewport height */
-            margin-left: -20vw; /* Adjusted to start further off-screen */
-            margin-top: -20vh; /* Adjusted to start further off-screen */
+            width: 140vw;
+            /* Increased to extend past viewport width */
+            height: 140vh;
+            /* Increased to extend past viewport height */
+            margin-left: -20vw;
+            /* Adjusted to start further off-screen */
+            margin-top: -20vh;
+            /* Adjusted to start further off-screen */
         }
+
         .email-row {
             display: flex;
             width: 100%;
         }
+
         .email-row:nth-child(even) {
             margin-left: 150px;
         }
+
         .email-item {
             font-size: 16px;
             color: #222;
@@ -37,10 +56,55 @@
             margin: 10px;
             flex: 0 0 auto;
         }
+
+        .header,
+        .footer {
+            position: fixed;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
+
+        .header {
+            top: 0;
+        }
+
+        .footer {
+            bottom: 0;
+        }
+
+        .header p,
+        .footer p {
+            color: #0000FF;
+            font-family: 'Open Sans', sans-serif;
+            font-size: .75rem;
+            margin: 0;
+    
+        }
+
+        .header sup,
+        .footer sup {
+            font-size: 0.6em;
+            vertical-align: super;
+        }
     </style>
 </head>
+
 <body>
+
+    <div class="header">
+        <p>Lover of SPAM<sup>®</sup></p>
+    </div>
+    
     <div class="email-grid" id="emailGrid"></div>
+
+    <div class="footer">
+        <p>not of spam.</p>
+    </div>
 
     <script>
         const emailGrid = document.getElementById('emailGrid');
@@ -59,14 +123,14 @@
             for (let i = 0; i < rowsCount; i++) {
                 const row = document.createElement('div');
                 row.classList.add('email-row');
-                
+
                 for (let j = 0; j < itemsPerRow; j++) {
                     const emailItem = document.createElement('div');
                     emailItem.classList.add('email-item');
                     emailItem.textContent = email;
                     row.appendChild(emailItem);
                 }
-                
+
                 emailGrid.appendChild(row);
             }
         }
@@ -75,4 +139,5 @@
         window.addEventListener('resize', fillGrid);
     </script>
 </body>
+
 </html>

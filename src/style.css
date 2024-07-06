@@ -42,7 +42,7 @@ nav a {
 }
 
 nav a:first-child {
-    color: #00FF00;
+    color: #0000FF;
 }
 
 .project-grid {
@@ -156,13 +156,13 @@ nav a:first-child {
 }
 
 ::selection {
-    background: #00FF00;
+    background: #0000FF;
     /* Neon green background */
     color: white;
 }
 
 ::-moz-selection {
-    background: #00FF00;
+    background: #0000FF;
     /* Neon green background */
     color: white;
 }
@@ -199,7 +199,7 @@ footer {
 }
 
 .social-icons a:hover {
-    color: #00FF00;  /* Bright green on hover */
+    color: #0000FF;  /* Bright green on hover */
 }
 
 
