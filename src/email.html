@@ -37,11 +37,25 @@
             flex: 1;
             display: flex;
             justify-content: center;
+            position: relative;
+        }
+
+        .email-wrapper {
+            position: relative;
         }
 
         .email-text {
             color: #222;
             white-space: nowrap;
+            cursor: pointer;
+            /* Add cursor pointer to indicate clickability */
+            transition: all 0.3s ease;
+            /* Smooth transition for hover effects */
+        }
+
+        .email-text:hover {
+            text-decoration: underline wavy #0000FF;
+            text-underline-offset: 6px;
         }
 
         .message {
@@ -54,19 +68,37 @@
             font-size: 0.6em;
             vertical-align: super;
         }
+
+        .hover-message {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #0000FF;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div class="email-container">
-            <div class="email-text" id="leftEmail"></div>
+            <div class="email-wrapper">
+                <div class="hover-message" id="leftMessage">NO! PICK ME!</div>
+                <div class="email-text" id="leftEmail"></div>
+            </div>
         </div>
         <div class="message">
             <p>Lover of SPAM<sup>®</sup>, not of spam.</p>
         </div>
         <div class="email-container">
-            <div class="email-text" id="rightEmail"></div>
+            <div class="email-wrapper">
+                <div class="hover-message" id="rightMessage">PICK ME!</div>
+                <div class="email-text" id="rightEmail"></div>
+            </div>
         </div>
     </div>
 
@@ -75,6 +107,8 @@
         const leftEmail = document.getElementById('leftEmail');
         const rightEmail = document.getElementById('rightEmail');
         const message = document.querySelector('.message');
+        const leftMessage = document.getElementById('leftMessage');
+        const rightMessage = document.getElementById('rightMessage');
 
         function resizeText() {
             const containerWidth = document.body.clientWidth;
@@ -89,7 +123,8 @@
             leftEmail.textContent = email;
             rightEmail.textContent = email;
 
-            while ((leftEmail.offsetWidth > emailContainerWidth || rightEmail.offsetWidth > emailContainerWidth) && fontSize > 8) {
+            while ((leftEmail.offsetWidth > emailContainerWidth || rightEmail.offsetWidth > emailContainerWidth) &&
+                fontSize > 8) {
                 fontSize--;
                 message.style.fontSize = `${fontSize}px`;
                 leftEmail.style.fontSize = `${fontSize}px`;
@@ -97,8 +132,113 @@
             }
         }
 
+        function handleLeftEmailInteraction() {
+            console.log('Left email interaction');
+            rightMessage.style.opacity = '1';
+            leftMessage.style.opacity = '0';
+        }
+
+        function handleRightEmailInteraction() {
+            console.log('Right email interaction');
+            leftMessage.style.opacity = '1';
+            rightMessage.style.opacity = '0';
+        }
+
+        function handleNoInteraction() {
+            console.log('No interaction');
+            leftMessage.style.opacity = '0';
+            rightMessage.style.opacity = '0';
+        }
+
+        function handleEmailClick(event) {
+            const clickedEmail = event.target;
+            const emailText = clickedEmail.textContent;
+
+            if (emailText === email) {
+                navigator.clipboard.writeText(emailText).then(() => {
+                    console.log('Email copied to clipboard');
+                    showMonsterMessage(clickedEmail);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            }
+        }
+
+        function showMonsterMessage(clickedEmail) {
+            const otherEmail = clickedEmail === leftEmail ? rightEmail : leftEmail;
+            otherEmail.textContent = "You MONSTER.";
+
+            setTimeout(() => {
+                otherEmail.textContent = email;
+                resizeText();
+            }, 2000);
+        }
+
+        function handleSelectionChange() {
+            const selection = window.getSelection();
+            if (selection.toString().length > 0) {
+                if (selection.containsNode(leftEmail, true)) {
+                    handleLeftEmailInteraction();
+                } else if (selection.containsNode(rightEmail, true)) {
+                    handleRightEmailInteraction();
+                }
+            } else {
+                handleNoInteraction();
+            }
+        }
+
+        function handleCopy(event) {
+            const selection = window.getSelection();
+            const copiedText = selection.toString();
+
+            if (copiedText === email) {
+                let clickedEmail;
+                if (selection.containsNode(leftEmail, true)) {
+                    clickedEmail = leftEmail;
+                } else if (selection.containsNode(rightEmail, true)) {
+                    clickedEmail = rightEmail;
+                }
+
+                if (clickedEmail) {
+                    event.preventDefault();
+                    navigator.clipboard.writeText(copiedText).then(() => {
+                        console.log('Email copied to clipboard');
+                        showMonsterMessage(clickedEmail);
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                    });
+                }
+            }
+        }
+
+        function initializeInteractions() {
+            leftEmail.addEventListener('mouseover', handleLeftEmailInteraction);
+            leftEmail.addEventListener('mouseout', handleNoInteraction);
+            leftEmail.addEventListener('click', handleEmailClick);
+
+            rightEmail.addEventListener('mouseover', handleRightEmailInteraction);
+            rightEmail.addEventListener('mouseout', handleNoInteraction);
+            rightEmail.addEventListener('click', handleEmailClick);
+
+            document.addEventListener('selectionchange', handleSelectionChange);
+            document.addEventListener('copy', handleCopy);
+
+            // Add title attribute to provide a hint on hover
+            leftEmail.title = "Click to copy email";
+            rightEmail.title = "Click to copy email";
+
+        }
+
+
+
         window.addEventListener('resize', resizeText);
         resizeText();
+
+        console.log('Left email:', leftEmail);
+        console.log('Right email:', rightEmail);
+
+
+        initializeInteractions();
     </script>
 </body>
 
