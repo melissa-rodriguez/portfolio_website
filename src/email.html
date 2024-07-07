@@ -84,6 +84,7 @@
             opacity: 0;
             transition: opacity 0.3s ease;
             white-space: nowrap;
+            font-size: .75rem;
         }
 
         footer {
@@ -93,6 +94,41 @@
             padding: 1em 0;
             font-size: 0.65rem;
             color: #7c7c7c;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .email-container {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .email-container:nth-child(3) {
+                display: none;
+            }
+
+            .hover-message {
+                display: none;
+            }
+
+            footer {
+                display: none;
+            }
+
+            .message {
+                display: block !important;
+                position: fixed;
+                bottom: 10px;
+                left: 0;
+                right: 0;
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -134,22 +170,41 @@
         function resizeText() {
             const containerWidth = document.body.clientWidth;
             const messageWidth = message.offsetWidth;
-            const emailContainerWidth = (containerWidth - messageWidth) / 2;
             let fontSize = 16; // Start with a smaller font size
 
-            message.style.fontSize = `${fontSize}px`;
-            leftEmail.style.fontSize = `${fontSize}px`;
-            rightEmail.style.fontSize = `${fontSize}px`;
+            if (containerWidth <= 768) {
+                // For tablet and smaller screens
+                leftEmail.style.fontSize = `${fontSize}px`;
+                leftEmail.textContent = email;
 
-            leftEmail.textContent = email;
-            rightEmail.textContent = email;
+                while (leftEmail.offsetWidth > containerWidth * 0.9 && fontSize > 8) {
+                    fontSize--;
+                    leftEmail.style.fontSize = `${fontSize}px`;
+                }
 
-            while ((leftEmail.offsetWidth > emailContainerWidth || rightEmail.offsetWidth > emailContainerWidth) &&
-                fontSize > 8) {
-                fontSize--;
+                rightEmail.style.display = 'none';
+                message.style.display = 'block';
+                message.style.fontSize = '0.75rem';
+            } else {
+                // For larger screens, keep the original logic
+                const emailContainerWidth = (containerWidth - messageWidth) / 2;
+
                 message.style.fontSize = `${fontSize}px`;
                 leftEmail.style.fontSize = `${fontSize}px`;
                 rightEmail.style.fontSize = `${fontSize}px`;
+
+                leftEmail.textContent = email;
+                rightEmail.textContent = email;
+                rightEmail.style.display = 'block';
+                message.style.display = 'block';
+
+                while ((leftEmail.offsetWidth > emailContainerWidth || rightEmail.offsetWidth > emailContainerWidth) &&
+                    fontSize > 8) {
+                    fontSize--;
+                    message.style.fontSize = `${fontSize}px`;
+                    leftEmail.style.fontSize = `${fontSize}px`;
+                    rightEmail.style.fontSize = `${fontSize}px`;
+                }
             }
         }
 
