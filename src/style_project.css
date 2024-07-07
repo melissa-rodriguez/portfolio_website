@@ -69,7 +69,34 @@ h2 {
     overflow: hidden;
 }
 
-.image-container img {
+/* Full-width 1:1 aspect ratio */
+.image-container.full-width.aspect-1-1 {
+    width: 100%;
+    padding-top: 100%;
+}
+
+/* Two-column 1:1 aspect ratio */
+.two-column .image-container.aspect-1-1 {
+    flex: 1;
+    padding-top: calc(50% - 10px);
+    /* Subtracting half of the gap */
+}
+
+/* Three-column 1:1 aspect ratio */
+.three-column {
+    display: flex;
+    gap: 20px;
+}
+
+.three-column .image-container.aspect-1-1 {
+    flex: 1;
+    padding-top: calc(33.333% - 13.333px);
+    /* Subtracting one-third of the gap */
+}
+
+/* Ensure content fits within the container */
+.image-container img,
+.image-container video {
     position: absolute;
     top: 0;
     left: 0;
@@ -270,6 +297,7 @@ a.link-underline {
 
 a.link-underline:hover {
     text-decoration: wavy underline #0000FF;
+    text-decoration-thickness: 1px;
 }
 
 a.link-underline:visited {
