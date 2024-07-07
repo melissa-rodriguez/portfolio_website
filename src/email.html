@@ -17,7 +17,13 @@
             background-color: white;
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            /* overflow: hidden; */
+        }
+
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         ::selection {
@@ -26,10 +32,10 @@
         }
 
         .container {
+            flex: 1;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 100vh;
             padding: 0 20px;
         }
 
@@ -47,15 +53,14 @@
         .email-text {
             color: #222;
             white-space: nowrap;
-            cursor: pointer;
-            /* Add cursor pointer to indicate clickability */
+            cursor: default;
             transition: all 0.3s ease;
-            /* Smooth transition for hover effects */
         }
 
         .email-text:hover {
-            text-decoration: underline wavy #0000FF;
             text-underline-offset: 6px;
+            text-decoration: underline wavy #0000FF;
+            text-decoration-thickness: 1px;
         }
 
         .message {
@@ -75,32 +80,48 @@
             left: 50%;
             transform: translateX(-50%);
             color: #0000FF;
-            font-weight: bold;
+            font-weight: normal;
             opacity: 0;
             transition: opacity 0.3s ease;
             white-space: nowrap;
+        }
+
+        footer {
+            width: 100%;
+            background-color: white;
+            text-align: center;
+            padding: 1em 0;
+            font-size: 0.65rem;
+            color: #7c7c7c;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="email-container">
-            <div class="email-wrapper">
-                <div class="hover-message" id="leftMessage">NO! PICK ME!</div>
-                <div class="email-text" id="leftEmail"></div>
+    <div class="page-wrapper">
+        <div class="container">
+            <div class="email-container">
+                <div class="email-wrapper">
+                    <div class="hover-message" id="leftMessage">NO! PICK ME!</div>
+                    <div class="email-text" id="leftEmail"></div>
+                </div>
+            </div>
+            <div class="message">
+                <p>Lover of SPAM<sup>®</sup>, not of spam.</p>
+            </div>
+            <div class="email-container">
+                <div class="email-wrapper">
+                    <div class="hover-message" id="rightMessage">PICK ME!</div>
+                    <div class="email-text" id="rightEmail"></div>
+                </div>
             </div>
         </div>
-        <div class="message">
-            <p>Lover of SPAM<sup>®</sup>, not of spam.</p>
-        </div>
-        <div class="email-container">
-            <div class="email-wrapper">
-                <div class="hover-message" id="rightMessage">PICK ME!</div>
-                <div class="email-text" id="rightEmail"></div>
-            </div>
-        </div>
+        <footer>
+            <p>CLICK TO COPY EMAIL</p>
+        </footer>
     </div>
+
+
 
     <script>
         const email = 'hello@melissa-rodriguez.com';
@@ -166,7 +187,7 @@
 
         function showMonsterMessage(clickedEmail) {
             const otherEmail = clickedEmail === leftEmail ? rightEmail : leftEmail;
-            otherEmail.textContent = "You MONSTER.";
+            otherEmail.textContent = "I'll remember this when the AI takes over.";
 
             setTimeout(() => {
                 otherEmail.textContent = email;
