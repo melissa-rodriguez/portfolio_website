@@ -304,6 +304,12 @@ a.link-underline:visited {
     color: inherit;
 }
 
+@media (max-width: 1024px) {
+    .container {
+        max-width: 90%;
+    }
+}
+
 @media (max-width: 768px) {
     .project-header {
         flex-direction: column;
@@ -324,32 +330,10 @@ a.link-underline:visited {
     .video-container {
         margin-top: 20px;
     }
-}
 
-@media (max-width: 768px) {
-    .project-header {
-        flex-direction: column;
-    }
-
-    .project-info {
-        padding-right: 0;
-        margin-bottom: 20px;
-    }
-
-    .project-thumbnail {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 1024px) {
-    .container {
-        max-width: 90%;
-    }
-}
-
-@media (max-width: 768px) {
-    .two-column {
-        flex-direction: column;
+    .two-column,
+    .three-column {
+        display: block;
     }
 
     .container {
@@ -364,6 +348,30 @@ a.link-underline:visited {
 
     .social-icons {
         margin-top: 15px;
+    }
+
+    /* Adjust image containers to maintain original aspect ratio */
+    .image-container {
+        width: 100%;
+        padding-top: 0 !important; /* Remove forced aspect ratio */
+        height: auto; /* Allow height to adjust based on content */
+        margin-bottom: 20px;
+    }
+
+    .image-container img,
+    .image-container video {
+        position: relative; /* Change from absolute to relative */
+        width: 100%;
+        height: auto; /* Allow height to adjust */
+        object-fit: contain; /* Ensure entire image/video is visible */
+    }
+
+    .three-column .image-container.aspect-1-1,
+    .two-column .image-container.aspect-1-1,
+    .image-container.full-width.aspect-1-1 {
+        width: 100%;
+        padding-top: 0;
+        flex: none;
     }
 }
 
