@@ -15,6 +15,62 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .wip-tile {
+            background-color: #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+        }
+
+        .wip-tile .project-info {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: white;
+        }
+
+        .wip-tile .project-info h2 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .wip-tile .project-info p {
+            color: white;
+            font-size: 0.75rem;
+            margin: 5px 0 0;
+        }
+
+        .wip-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #0000FF;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.05em;
+            padding: 4px 10px;
+            z-index: 3;
+        }
+
+        .wip-pattern {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: repeating-linear-gradient(
+                45deg,
+                #3a3a3a,
+                #3a3a3a 10px,
+                #444 10px,
+                #444 20px
+            );
+            opacity: 0.6;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,76 +84,59 @@
                 <img src="././assets/me.png" alt="Animated Logo" class="animated-logo">
             </div>
 
-            <!-- <div class="logo-container">
-                <video autoplay loop muted playsinline class="animated-logo">
-                    <source src="././assets/animation.mov" type="video/mp4">
-                </video>
-            </div> -->
-
             <nav>
                 <a href="index.html">PORTFOLIO</a>
-                <!-- <a href="#about">ABOUT</a> -->
             </nav>
         </header>
 
-
-
-
         <main>
-            <a href="project_perspective_grid.html" class="project-link">
-                <div class="project-grid">
-                    <!-- Your project tiles go here -->
+            <div class="project-grid">
+
+                <!-- WIP tile -->
+                <div class="project-tile wip-tile">
+                    <div class="wip-pattern"></div>
+                    <!-- <div class="wip-badge">COMING SOON</div> -->
+                    <div class="project-info">
+                        <h2>Coming Soon</h2>
+                        <p>WORK CURRENTLY IN DEVELOPMENT</p>
+                    </div>
+                </div>
+
+                <a href="project_perspective_grid.html" class="project-link">
                     <div class="project-tile">
-                        <img src="././assets/project_perspective_grid/static.jpg" alt="New Perspectives"
-                            class="main-image">
-                        <img src="././assets/project_perspective_grid/hover.jpg" alt="New Perspectives Hover"
-                            class="hover-image">
+                        <img src="././assets/project_perspective_grid/static.jpg" alt="New Perspectives" class="main-image">
+                        <img src="././assets/project_perspective_grid/hover.jpg" alt="New Perspectives Hover" class="hover-image">
                         <div class="project-info">
                             <h2>New Perspectives</h2>
                             <p>GENERATIVE PERSPECTIVE-GRID ALGORITHM</p>
                         </div>
                     </div>
-            </a>
+                </a>
 
-            <!-- Your project tiles go here -->
-            <a href="project_intro_to_processing.html" class="project-link">
-                <div class="project-tile">
-                    <img src="././assets/project_intro_to_processing/static.png" alt="Intro to Processing"
-                        class="main-image">
-                    <img src="././assets/project_intro_to_processing/hover.png" alt="Intro to Processing Hover"
-                        class="hover-image">
-                    <div class="project-info">
-                        <h2>The Coding Train</h2>
-                        <p>INTRO TO PROCESSING</p>
+                <a href="project_intro_to_processing.html" class="project-link">
+                    <div class="project-tile">
+                        <img src="././assets/project_intro_to_processing/static.png" alt="Intro to Processing" class="main-image">
+                        <img src="././assets/project_intro_to_processing/hover.png" alt="Intro to Processing Hover" class="hover-image">
+                        <div class="project-info">
+                            <h2>The Coding Train</h2>
+                            <p>INTRO TO PROCESSING</p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
 
-            <!-- Your project tiles go here -->
-            <a href="project_playground.html" class="project-link">
-                <div class="project-tile">
-                    <img src="././assets/project_playground/static.png" alt="Playground" class="main-image">
-                    <img src="././assets/project_playground/hover.png" alt="Playground Hover" class="hover-image">
-                    <div class="project-info">
-                        <h2>Playground</h2>
-                        <p>A SKETCHBOOK REPOSITORY</p>
+                <a href="project_playground.html" class="project-link">
+                    <div class="project-tile">
+                        <img src="././assets/project_playground/static.png" alt="Playground" class="main-image">
+                        <img src="././assets/project_playground/hover.png" alt="Playground Hover" class="hover-image">
+                        <div class="project-info">
+                            <h2>Playground</h2>
+                            <p>A SKETCHBOOK REPOSITORY</p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
 
-            <!-- Your project tiles go here -->
-            <div class="project-tile">
-                <img src="././assets/image1.jpg" alt="Google Maps API x Houdini" class="main-image">
-                <img src="././assets/image1-hover.jpg" alt="Google Maps API x Houdini Hover" class="hover-image">
-                <div class="project-info">
-                    <h2>Google Maps API x Houdini</h2>
-                    <p>3D RENDERS OF GOOGLE DATA</p>
-                </div>
             </div>
-
-
-    </div>
-    </main>
+        </main>
     </div>
 
     <!-- FOOTER -->
@@ -106,10 +145,8 @@
             <p>Ⓢ <span id="current-year"></span> Melissa Rodriguez</p>
             <div class="social-icons">
                 <a href="https://twitter.com/hellomelissarod" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/hellomelissarodriguez/" target="_blank"><i
-                        class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/melissarodriguez5591/" target="_blank"><i
-                        class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/hellomelissarodriguez/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/melissarodriguez5591/" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/melissa-rodriguez" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="email.html" target="_blank"><i class="fas fa-envelope"></i></a>
             </div>
